@@ -1,0 +1,35 @@
+/*
+@Author     :   Channaveer Hakari
+@Email      :   channaveer@sk-access.net
+@Copyrights :   SK Access Pvt. Ltd.
+*/
+
+.margin-top50{
+    margin-top: 50px !important;
+}
+
+.margin-bottom5{
+    margin-bottom: 5px;
+}
+
+.alert-custom-blue1{
+    background-image: linear-gradient(to bottom, #31a9b8 0px, #c4ecc4 100%);
+    background-repeat: repeat-x;
+    border-color: #31a9b8;
+    color:#fff;
+}
+
+.alert-custom-blue2{
+    background-image: linear-gradient(to bottom, #68ff91 0px, #00c8bd 100%);
+    background-repeat: repeat-x;
+    border-color: #f5e79e;
+    color:#fff;
+}
+
+.alert-custom-violet{
+    background: #5B4181;
+}
+
+.alert-custom-violet a{
+    color: #FFF !important;
+}
