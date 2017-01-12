@@ -140,17 +140,21 @@ $blockInventoryMasterDetails = getInventoryMasterDetailsByBinId($uniqueNumber);
                 <th>Total Slabs</th>
                 <th>Area(SqFeet)</th>
             </tr>
-            <?php foreach($slabsBlockDetails as $slabsBlockDetail){ ?>
-            <tr>
-                <th>
-                    <?php echo $slabsBlockDetail['thickness_name'].' '.$slabsBlockDetail['thickness_unit']; ?>
-                </th>
-                <td><?php echo $slabsBlockDetail['count']; ?></td>
-                <td><?php 
-                $convertedArea = getUnitConvertedArea($slabsBlockDetail['area'], $slabsBlockDetail['area_unit'],'sqfeet');
-                echo number_format($convertedArea,3,'.',''); ?></td>
-            </tr>
-            <?php } ?>
+            <?php 
+            if(count($slabsBlockDetails) > 0){
+                foreach($slabsBlockDetails as $slabsBlockDetail){ ?>
+                <tr>
+                    <th>
+                        <?php echo $slabsBlockDetail['thickness_name'].' '.$slabsBlockDetail['thickness_unit']; ?>
+                    </th>
+                    <td><?php echo $slabsBlockDetail['count']; ?></td>
+                    <td><?php 
+                    $convertedArea = getUnitConvertedArea($slabsBlockDetail['area'], $slabsBlockDetail['area_unit'],'sqfeet');
+                    echo number_format($convertedArea,3,'.',''); ?></td>
+                </tr>
+                <?php 
+                }
+            } ?>
         </tbody>
     </table>
     

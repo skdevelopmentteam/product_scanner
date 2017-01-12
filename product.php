@@ -279,6 +279,7 @@ function block_slabs_details($uniqueNumber){
             . " WHERE im.blockinventoryid = $blockInventoryId AND im.status = 'Available'"
             . " GROUP BY im.thicknessid";
     $result = mysqli_query($link,$query);
+    $blockSlabDetails = array();
     while($row = mysqli_fetch_assoc($result)){
         $blockSlabDetails[] = $row;
     }
