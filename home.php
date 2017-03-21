@@ -14,11 +14,29 @@ if (isset($_SESSION['scanned_slabs'])) {
     unset($_SESSION['scanned_slabs']);
 }
 ?>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $("#slabDetails").on('click',function(){
+            var code = $('#slabDetailsVal').val();
+             window.location = "<?php echo $base_url; ?>slab_details.php?code="+code;
+        });
+
+        console.log( "ready!" );
+    });
+
+   
+</script>
+
 <br />
 <!--To add the single dummy row-->                
 <div class="col-xs-12 col-sm-6 alert alert-success">
-    <a href="zxing://scan/?ret=<?php echo $base_url; ?>slab_details.php?code={CODE}">
+    <!-- <a href="zxing://scan/?ret=<?php echo $base_url; ?>slab_details.php?code={CODE}">
         Check Slab Details
+    </a> -->
+    Slab Details: <input type="text" id="slabDetailsVal"/>
+    <a  href="#" id="slabDetails">
+        Send Request
     </a>
 </div>
 <div class="col-xs-12 col-sm-6 alert alert-info">
