@@ -14,11 +14,27 @@ include_once 'core/functions/area_helper.php';
 include 'includes/overall/header.php';
 
 $uniqueNumber = $_GET['code'];
+
 $slabDetails = slab_details($uniqueNumber);
 $slabsBlockDetails = block_slabs_details($uniqueNumber);
 $blockInventoryMasterDetails = getInventoryMasterDetailsByBinId($uniqueNumber);
-
 ?>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $("#slabDetails").on('click',function(){
+            var code = $('#slabDetailsVal').val();
+            //document.location = "<?php echo $base_url; ?>slab_details.php?code="+code;
+            var myURL = document.location;
+            document.location = myURL + "?code="+code";
+        });
+
+        console.log( "ready!" );
+    });
+
+   
+</script>
+
 <!--SK-ISIPL-34343434-0-1-->
 
 <?php if($slabDetails['row'] == null){ ?>
@@ -35,8 +51,12 @@ $blockInventoryMasterDetails = getInventoryMasterDetailsByBinId($uniqueNumber);
     ?>
 
     <h2>Slab Details</h2>
-    <a href="zxing://scan/?ret=<?php echo $base_url; ?>slab_details.php?code={CODE}" class="btn btn-primary">
+    <!-- <a href="zxing://scan/?ret=<?php echo $base_url; ?>slab_details.php?code={CODE}" class="btn btn-primary">
         Scan Again
+    </a> -->
+    Scan Again: <input type="text" id="slabDetailsVal"/>
+    <a  href="#" id="slabDetails">
+        Send Request
     </a>
     <br /><br />
     <h4>Slab Status - <?php echo ($slabDetails['row']['isStockStatusVerified'] == 1) ? '<span class="text-success">Verified</span>' : '<span class="text-danger">Not Verified</span>'; ?></h4>
@@ -204,9 +224,9 @@ $blockInventoryMasterDetails = getInventoryMasterDetailsByBinId($uniqueNumber);
    
   <?php } ?>  
     
-    <a href="zxing://scan/?ret=<?php echo $base_url; ?>slab_details.php?code={CODE}" class="btn btn-primary">
-        Scan Again
-    </a>
+    // <a href="zxing://scan/?ret=<?php echo $base_url; ?>slab_details.php?code={CODE}" class="btn btn-primary">
+    //     Scan Again
+    // </a>
     <br /><br />
     <script type="text/javascript">
         function findInventoryDetails(e){
